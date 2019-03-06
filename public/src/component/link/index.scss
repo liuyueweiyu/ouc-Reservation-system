@@ -1,0 +1,16 @@
+.link{
+    text-decoration: none;
+    font-size:16px;
+    display: inline-block;
+    line-height: 15px;
+    font-weight:400;
+    cursor: pointer;
+    color:rgba(40, 120, 255, 1);
+    &:hover{
+        color:rgba(40, 120, 255, 1);
+        text-decoration: none;
+    }
+    @media screen and (max-width:1366px) {
+        font-size: 14px;
+    }
+}

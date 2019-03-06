@@ -1,0 +1,38 @@
+.infor {
+    width: 21rem;
+    margin: 2.4rem auto 0;
+    @media screen and (min-height:800px) {
+        margin-top: 4.5rem;
+    }
+    .label{
+        font-size:1.2rem;
+        font-weight:400;
+        color:rgba(51, 51, 51,1);
+        margin-bottom: 1.2rem;
+    }
+    .input {
+        width:18.8rem;
+        height:1rem;
+        border:.1rem solid rgba(40, 120, 255, 1);
+        border-radius:.2rem;
+        padding: .8rem 1rem;
+        margin-bottom: 1.5rem;
+    }
+    @media screen and (min-height:736px) {
+        .label{
+            margin-bottom: 2.1rem;
+        }
+        .input{
+            margin-bottom: 3.1rem;
+        }
+    }
+    .textaera{
+        height: 12.6rem;
+        resize: none;
+    }
+    .botton {
+        margin-top: 0.7rem;
+        
+    }
+
+}

@@ -1,0 +1,18 @@
+.button{
+    border:none;
+    width:420px;
+    height:70px;
+    background:rgba(40, 120, 255, 1);
+    box-shadow:0px 5px 8px 0px rgba(40, 120, 255, 0.2);
+    border-radius:10px;
+    font-size:30px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    color:rgba(255, 255, 255, 1);
+    cursor: pointer;
+    @media screen and (max-width:1366px) {
+        width: 304px;
+        height: 46px;
+        font-size: 24px;
+    }
+}

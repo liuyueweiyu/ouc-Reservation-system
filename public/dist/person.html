@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>众创空间预约系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="20181101101247273_easyicon_net_32.ico"></head>
+<body style="background:rgba(250,250,250,1)">
+    <script>
+        if (!this.IsPC()) {
+        window.location = './reservation-mobile.html';
+    }
+    function  IsPC() {
+        var userAgentInfo = navigator.userAgent;
+        var Agents = new Array("Android", "iPhone", "SymbianOS", "Windows Phone", "iPad", "iPod");
+        var flag = true;
+        for (var v = 0; v < Agents.length; v++) {
+            if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
+    </script>
+    <div id="root"></div>
+<script type="text/javascript" src="js/person.bundle.js"></script></body>
+</html>

@@ -1,0 +1,130 @@
+.right{
+    display: flex;
+    border-radius: 0px 10px 10px 0px;
+    justify-content: center;
+    -ms-position: relative;
+    align-items: center;
+    background: #fff;
+    
+}
+.login {
+    width: 420px;
+    @media screen and (max-width:1366px) {
+        width: 304px;
+    }
+    -ms-position: absolute;
+    -ms-top:0;
+    -ms-bottom:0;
+    -ms-left:0;
+    -ms-right: 0;
+    -ms-margin:auto;
+    -ms-margin-top:70px;
+    
+    h2{
+        text-align: center;
+        margin-bottom: 3px;
+    }
+    
+    .subtitle {
+        font-size: 36px;
+        font-stretch: normal;
+        color: #2878ff;
+        font-family:'MicrosoftYaHei-Bold';
+        font-weight:bold;
+        line-height: 1em;
+
+    }
+    input{
+        margin-top: 72px;
+    }
+    .code{
+        margin-top: 22px;
+        width: 100%;
+        input {
+            display: inline-block;
+            width: 210px;
+            margin-top: 66px;
+        }
+        @media screen and (max-width:1366px) {
+            width: 304px;
+            margin: 0 auto;
+            input{
+                width: 120px;
+                
+            }
+        }
+        
+        canvas{
+            float: right;
+            margin-top: 40px;
+            cursor: pointer;
+            @media screen and (max-width:1366px) {
+                margin-top: 30px;
+            }
+        }
+        
+    }
+    .links{
+        position: relative;
+    }
+    a{
+        float: left;
+        &:last-of-type{
+            position: absolute;
+            right: 0;
+        }
+        margin: 57px 0 11px;
+    }
+    @media screen and (max-width:1366px) {
+        .subtitle {
+            font-size: 30px;
+        }
+        input {
+            margin-top: 40px;
+        }
+    }
+}
+
+
+.forget{
+    .subtitle {
+        text-align: left;
+    }
+    label{
+        display: block;
+        font-size: 20px;
+        color: #1a1a1a;
+        line-height: 20px;
+        
+    }
+    .lable{
+        margin-top: 70px;
+        @media screen and (max-width:1366px) {
+            margin-top: 50px;
+        }
+    }
+    .input {
+        margin-bottom: 70px;
+
+        @media screen and (max-width: 1366px) {
+            margin-bottom: 50px;
+        }
+    }
+    input{
+        width: calc(100% - 62px);
+        height: 44px;
+        padding: 10px 20px;
+        border-radius: 10px;
+        font-size: 19px;
+        margin: 25px 0 ;
+        @media screen and (max-width:1366px) {
+            height: 26px;
+            // margin: 25px 0 116px;
+        }
+        border: solid 1px #2878ff;
+        &:focus{
+            outline: none;
+            
+        }
+    }
+}

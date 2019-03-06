@@ -1,0 +1,58 @@
+.title{
+    font-size:30px;
+    font-family:MicrosoftYaHei-Bold;
+    font-weight:bold;
+    padding: 70px 0 50px;
+    color:rgba(40, 120, 255, 0.9);
+    opacity:0.9;
+    text-align: center;
+    line-height: 1em;
+    text-shadow:0px 2px 9px rgba(51, 51, 51, 0.15);
+    @media screen and (max-width:1366px) {
+        padding: 30px 0 20px;
+        font-size:26px;
+        
+    }
+    position: relative;
+    img{
+        width: 36px;
+        height: 36px;
+        position: absolute;
+        bottom: 30px;
+        right: 298px;
+        cursor: pointer;
+        @media screen and (max-width:1366px) {
+            right: calc(50vw - 564px);
+            height: 24px;
+            width: 24px;
+        }
+            
+    }
+    .toperson{
+        p {
+            width: 77px;
+            height: 33px;
+            background: rgba(102, 102, 102, 1);
+            position: absolute;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(255, 255, 255, 1);
+            text-align: center;
+            line-height: 33px;
+            right: 280px;
+            @media screen and (max-width:1366px) {
+                right: calc(50vw - 590px);
+                bottom: 20px;
+            }
+            bottom: -40px;
+            opacity: 0;
+            z-index: 10;
+        }
+        &:hover{
+            p {
+                opacity: 1;
+            }
+        }
+    }
+}

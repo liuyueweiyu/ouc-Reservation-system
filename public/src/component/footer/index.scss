@@ -1,0 +1,13 @@
+.footer{
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: center;
+    margin-top: calc(50vh - 423px);
+    color: #333333;
+    -webkit-margin-top:41px;
+    @media screen and (max-width:1366px) {
+        margin-top: calc(50vh - 277px);
+    }
+}

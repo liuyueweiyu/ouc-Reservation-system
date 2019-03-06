@@ -1,0 +1,19 @@
+@import '../stylesheet/reset';
+
+.container {
+    width: 1200px;
+    height: 700px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 3px 3px 15px 0px rgba(40, 120, 255, 0.2);
+    @media screen and (max-width:1366px) {
+        height: 468px;
+        width: 854px;
+    }
+    .left,
+    .right {
+        float: left;
+        width: 50%;
+        height: 100%;
+    }
+}

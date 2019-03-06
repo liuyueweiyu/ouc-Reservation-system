@@ -1,0 +1,65 @@
+.space {
+    margin-top: 5.5rem;
+    @media screen and (min-height:800px) {
+        margin-top: 10.3rem;
+    }
+    .choose{
+        width:34.5rem;
+        margin: 0 auto;
+        .item{
+            display: inline-block;
+            width: 15.2rem;
+            .name{
+                text-align: center;
+                font-size:1rem;
+                color:rgba(51, 51, 51, 1);
+            }
+            
+            .img{
+                margin: 1.6rem 0;
+                @media screen and (min-height:800px) {
+                    margin: 3.5rem 0;
+                }
+                width: 15rem;
+                height: 15rem;
+                background:rgba(241, 244, 249, 1);
+                border:.1rem solid transparent;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius:.2rem;
+            }
+            .ban {
+                background: transparent;
+                color: #Ededed;
+            }
+            .select{
+                border:.1rem solid rgba(40, 120, 255, 1);
+                
+            }
+            .waring{
+                // margin-top: 1.5rem;
+                text-align: center;
+                font-size:1rem;
+                color:rgba(255, 185, 0, 1);
+            }
+            .logo{
+                display: inline-block;
+                border-radius: 50%;
+                width: 1.1rem;
+                height: 1.1rem;
+                line-height: 1em;
+                color: white;
+                background: rgba(255, 185, 0, 1);
+            }
+        }
+    }
+    .botton {
+        // margin-top: 11.4rem;
+        margin-top: 6.4rem;
+        
+        @media screen and (min-width: 738px) and (max-width: 1024px) {
+           margin-top: 9.4rem;
+        }
+    }
+}
