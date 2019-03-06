@@ -1,5 +1,5 @@
 /config/key.config.js
 /config/mail.config.js
 /node_modules/*
-/.vscode
+/.vscode/*
 /package-lock.json
