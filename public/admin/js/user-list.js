@@ -74,9 +74,10 @@ layui.use('table', function () {
                     data: {
                         id:data.id,
                         form:'users',
-                        col:"status",
-                        value: data.status >= 2 ? data.status - 2 : data.status+2,
-                        type:1
+                        status: data.status >= 2 ? data.status - 2 : data.status + 2
+                        // col:"status",
+                        // value: data.status >= 2 ? data.status - 2 : data.status+2,
+                        // type:1
                     },
                     success:function (data) {
                         

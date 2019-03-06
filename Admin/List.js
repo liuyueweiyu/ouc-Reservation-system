@@ -16,18 +16,18 @@ async function getlist(req,res,table) {
             key = req.query.key;
         let result = {},
             filter ;
-        filter = !key?undefined:" name LIKE '%"+key +"%'";
+        filter = !key?undefined:"where name LIKE '%"+key +"%'";
         //admin=1,查管理员
         if (table == 'admins') {
             filter = `where ranks = 1 ${!key?'':"  && name LIKE '%"+key +"%'"};`;
         }
         result.count = await sqlhelper.selectTableCount(table, filter);
-        filter = (!key ? '' : ` WHERE name LIKE '%" ${key} "%'"`) + ` ORDER BY id LIMIT ${(page - 1) * pageSize},${pageSize}`;
+        filter = (!key ? '' : ` WHERE name LIKE '%${key}%'`) + ` ORDER BY id LIMIT ${(page - 1) * pageSize},${pageSize}`;
         if (table == 'admins') {
-            filter = `where ranks=1 ${!key?"":" && name LIKE '%"+key +"%'"} ORDER BY id LIMIT ${(page - 1) * pageSize},${pageSize} ;`;
+            filter = `where ranks=1 ${!key?"":` && name LIKE '%${key}%'`} ORDER BY id LIMIT ${(page - 1) * pageSize},${pageSize} ;`;
         }
         const data = await sqlhelper.selectTableItem(table,filter);
-        if (data[0].password) {
+        if (data.length && data[0].password) {
             for (let i = 0; i < data.length; i++) {
                 delete data[i].password;
             }
@@ -37,6 +37,7 @@ async function getlist(req,res,table) {
         result.msg = '发送成功!';
         res.send(JSON.stringify(result));
     } catch (error) {
+        console.log(error)
         result = {
             code: 1,
             "msg": "查询出错!",

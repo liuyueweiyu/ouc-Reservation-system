@@ -26,7 +26,7 @@ async function register(req,res) {
             to: req.body.email,
             subject: '激活用户',
             text: '',
-            html: `<h1>点击链接激活,如果激活失败请尝试复制链接后从浏览器中打开...<a href='${webconfig.IP}/active'?id=${data.insertId}&&code=${code}'>http://it.ouc.edu.cn/create/active?id=${data.insertId}&&code=${code}</a></h1>`
+            html: `<h1>点击链接激活,如果激活失败请尝试复制链接后从浏览器中打开...<a href='${webconfig.IP}/active'?id=${data.insertId}&&code=${code}'>${webconfig.IP}/active?id=${data.insertId}&&code=${code}</a></h1>`
         }
         await mailhelper.sendMail(mailOptions);
         res.send({
@@ -34,6 +34,7 @@ async function register(req,res) {
             msg: '注册成功!'
         });
     } catch (error) {
+        console.log(error)
         res.send({
             code: 1,
             msg: error.msg||'未知错误!'

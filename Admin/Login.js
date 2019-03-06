@@ -24,7 +24,7 @@ async function action(req,res) {
     password = md5(password);
     username = encodeURIComponent(username);
     try {
-        data = await sqlhelper.selectTableItem('admins', `where name = '${username}'`, ['password']);
+        data = await sqlhelper.selectTableItem('admins', `where name = '${username}'`, ['password','id']);
         if(data.length == 0)
             res.send('不存在该用户!');
         else if(data[0].password != password)

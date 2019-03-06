@@ -5,13 +5,16 @@ function checkEmail(value) {
     return boo ? undefined : '邮箱格式不正确';
 }
 
-function checkName(value) {
+function checkName(value,min = 2) {
     if (value.length == 0)
         return '输入不能为空';
-    if (value.length > 10) {
-        return `不得多于10个字符`;
+    if (value.length > value) {
+        return `不得多于${value}个字符`;
     }
-    return /^[a-zA-Z0-9]{6,10}$/.test(value) ? undefined : '不得含有特殊字符';
+    if (value.length < min) {
+        return `不得少于${min}个字符`;
+    }
+    return /^[a-zA-Z0-9]+$/.test(value) ? undefined : '不得含有特殊字符';
 }
 function checkStr(value,maxlen) {
     if(value.length == 0)

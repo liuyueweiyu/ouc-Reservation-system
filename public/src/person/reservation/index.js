@@ -177,7 +177,7 @@ class Reservation extends React.Component{
                             {
                                 pictures.map((v,i)=>{
                                     return (
-                                         <a key={i} ><img src={'./images/'+v} /></a>
+                                         <a key={i} src={'../images/'+v}><img src={'../images/'+v} /></a>
                                     );
                                 })
                             }

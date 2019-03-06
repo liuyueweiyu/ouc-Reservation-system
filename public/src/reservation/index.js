@@ -61,15 +61,15 @@ class Reservervation extends React.Component{
             method:'GET',
             dataType:'JSON',
             success:function (data) {
-                if(data.code != 0){
-                    alert(data.msg);
-                    return;
+                if(data.code == 0 || data.code == 2){
+                    that.setState({
+                        login: 1,
+                    })
                 }
                 that.setState({
-                    login: 1,
                     status: data.status
                 })
-                if (data.status == 2) {
+                if (data.code == 2) {
                     that.setState({
                         isuppic: 2,
                     })

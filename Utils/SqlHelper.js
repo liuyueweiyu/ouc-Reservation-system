@@ -21,6 +21,7 @@ function insertItems(table,obj) {
                     code: 2,
                     msg
                 });
+                return;
             }
         }
         con.query(addSql, [addSqlParams], function (err, data) {
@@ -44,6 +45,7 @@ function insertItem(table,obj) {
         const msg = verify[table].test(addSqlArgs, addSqlParams);
         if(msg){
             reject({code:2,msg});
+            return;
         }
         con.query(addSql, addSqlParams, function (err, data) {
             con.end();
@@ -67,6 +69,7 @@ function updateItemByFilter(table, obj, filter) {
         const msg = verify[table].test(modSqlArgss, modSqlParams);
         if(msg){
             reject({code:2,msg});
+            return;
         }
         con.query(modSql, function (err, data) {
             con.end();
@@ -92,6 +95,7 @@ function updateItem(table,obj,id,filter) {
         const msg = verify[table].test(modSqlArgss, modSqlParams);
         if(msg){
             reject({code:2,msg});
+            return;
         }
         con.query(modSql, modSqlParams, function (err, data) {
             con.end();
@@ -119,6 +123,7 @@ function deleteItems(table,ids) {
     return new Promise((resolve, reject) => {
         if (ids == '' || !/^[0-9,]*$/.test(ids)) {
             reject({code: 2,msg: '错误参数!'})
+            return;
         }
         con.query(delSql, function (err, data) {
             con.end();
@@ -129,7 +134,7 @@ function deleteItems(table,ids) {
 }
 
 function selectTableCount(table,filter) {
-    const sql = `SELECT COUNT(id) FROM ${table} ${filter === undefined?'':filter}`,
+    const sql = `SELECT COUNT(id) FROM ${table} ${filter === undefined?'':filter};`,
           con = getCon(selectTableCount,table,filter)
     return new Promise((resolve, reject) => {
         con.query(sql, function (err, data) {

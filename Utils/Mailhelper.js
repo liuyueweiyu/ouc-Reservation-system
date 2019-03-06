@@ -1,4 +1,3 @@
-// module.exports = 
 const config = {
     host: 'stu.ouc.edu.cn',
     port: 25,

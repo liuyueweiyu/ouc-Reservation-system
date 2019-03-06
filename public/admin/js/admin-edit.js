@@ -22,6 +22,9 @@ layui.use(['form','layer'], function(){
                       }
                       else
                         alert(data.msg);
+                      if(data.code == 2){
+                          window.location = './login';
+                      }
                   },
                   error:function (err) {
                       console.log(err);

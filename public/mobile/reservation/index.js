@@ -33,18 +33,17 @@ class Reservation extends React.Component {
             method:'GET',
             dataType:'JSON',
             success:function (data) {
-                if(data.code == 1)
+                if (data.code == 0 || data.code == 2) {
                     that.setState({
-                        login:1,
-                        status: data.status,
-                        
+                        login: 1,
                     })
-                if(data.code == 2){
+                }
+                that.setState({
+                    status: data.status
+                })
+                if (data.code == 2) {
                     that.setState({
-                        login:1,
-                        isuppic:2,
-                        status: data.status,
-                        
+                        isuppic: 2,
                     })
                 }
             }

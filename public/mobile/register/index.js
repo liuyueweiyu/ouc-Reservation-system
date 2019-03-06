@@ -70,8 +70,13 @@ gwQco1KRMDSmXSMkDwIDAQAB
             localStorage.setItem(this.state.password, password);
         } else
             password = localStorage.getItem(password);
-        let datas = Object.assign({},this.state)
-        datas.password = password;
+        let datas = {
+            name : this.state.name,
+            studentid:this.state.studentid,
+            phonenumber:this.state.phonenumber,
+            password :password,
+            email:this.state.email
+        }
         $.ajax({
             url: '../user/register',
             method:'POST',

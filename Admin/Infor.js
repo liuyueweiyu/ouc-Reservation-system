@@ -23,6 +23,8 @@ async function resetPwd(req,res){     //重置密码
 async function getInfor(req,res) {    //获取管理员信息
     let data;
     try {
+        if (!req.session.login)
+            throw {code:2,msg:'尚未登录!'}
         data = await sqlhelper.selectTableItem('admins','where id='+req.session.login,['id','email','name']);
         res.send(JSON.stringify({
             code:0,

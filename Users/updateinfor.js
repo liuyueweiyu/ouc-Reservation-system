@@ -11,7 +11,7 @@ async function submitinfor(req,res) {
                 email: req.body.email
             },req.session.user);
             res.send(JSON.stringify({
-                code: 1,
+                code: 0,
                 msg: '修改成功！'
             }))
         }
@@ -113,7 +113,7 @@ async function active(req,res) {
             <p>激活成功,3秒后跳至首页...</p>
             <script>
                 setTimeout(function(){
-                    window.location = '${webconfig.IP}/dist/index.html';
+                    window.location = '../';
                 },3000);
             </script>
         `)

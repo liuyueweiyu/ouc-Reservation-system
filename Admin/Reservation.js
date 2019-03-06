@@ -101,25 +101,30 @@ async function review(req, res) {     //管理员审核预约
                 text: '',
                 html: `<h1>你好，${item.name}申请在${str}使用众创空间${item.space == 0?'投影区域':'众创套件'}已得到管理员同意</h1>`
             }
+            await mailhelper.sendMail(mailOptions);
         }
         else{
             await sqlhelper.updateItem('infor',{
                 status: req.body.status, 
                 reason : req.body.reason, 
             }, req.body.id);
-            let data = await sqlhelper.selectTableItem('users', `where id = (select applicant from infor where id = ${req.body.id})`,['email']);
-            mailOptions = {
-                from: 'itstudio@stu.ouc.edu.cn',
-                to: [data[0].email],
-                subject: '众创空间预约',
-                text: '',
-                html: `<h1>你好，您的预约申请被${req.body.status == 2?'拒绝':'设置成违规'}!</h1>
+            if (req.body.status != 0){
+                let data = await sqlhelper.selectTableItem('users', `where id = (select applicant from infor where id = ${req.body.id})`, ['email']);
+                mailOptions = {
+                    from: 'itstudio@stu.ouc.edu.cn',
+                    to: [data[0].email],
+                    subject: '众创空间预约',
+                    text: '',
+                    html: `<h1>你好，您的预约申请被${req.body.status == 2?'拒绝':'设置成违规'}!</h1>
                         <p>理由为${req.body.reason}</p>`
+                }
+                await mailhelper.sendMail(mailOptions);
             }
+            
         }
-        await mailhelper.sendMail(mailOptions);
+        
         response = {
-            code: 1,
+            code: 0,
             msg: '操作成功!'
         }
         res.send(JSON.stringify(response));
