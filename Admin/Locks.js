@@ -144,7 +144,7 @@ async function lock(req,res) {
             obj.status = new Array(len).fill(1).join();
             obj.send = new Array(len).fill(0).join();
             try {
-                sqlhelper.insertItems('infor', obj);
+                await sqlhelper.insertItems('infor', obj);
                 res.send(JSON.stringify({
                     code: 0,
                     msg: '添加成功!'
@@ -158,10 +158,10 @@ async function lock(req,res) {
         }
 
     } catch (error) {
-        res.send(JSON.stringify({
+        res.send(JSON.stringify(Object.assign({
             code: error.code,
             msg: error.msg || '未知错误!'
-        }));
+        }),error));
     }
 }
 

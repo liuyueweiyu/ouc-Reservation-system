@@ -131,7 +131,7 @@ Object.assign(infor,{
         return checkStr(value,100);
     },
     time:function (value) {
-        return isNaN(value);
+        return isNaN(value)?'时间错误!':undefined;
     },
     status:function (value) {
         return checkNumber(value);

@@ -108,12 +108,12 @@ gwQco1KRMDSmXSMkDwIDAQAB
             data: {password},
             dataType: 'JSON',
             success: function (data) {
-                if (data.code == 0) {
+                if (data.code == 1) {
                     alert('尚未登录!');
                     window.location = './login.html';
                     return;
                 }
-                if(data.status == 0){
+                if(data.code == 0){
                     alert('修改成功!');
                     window.location = './person.html';
                 }

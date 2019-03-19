@@ -14,11 +14,11 @@ async function getlist(req,res) {    //获取预约列表
           pageSize = req.query.limit,
           key = req.query.key,
           id = req.query.id,
-          type = req.query.type;
+          type = Number(req.query.type);
     let result = {},
         filter = !isNaN(key) && key >= 0 && key <= 3;
     
-    let filterstr = `Where send != 0  ${filter?'And status='+key:''} ${id?'And applicant='+id:''}  ${type=="1"?'AND time<'+Math.floor(new Date()/1000)+86400*7:''}`;
+    let filterstr = `Where send = ${type}  ${filter?'And status='+key:''} ${id?'And applicant='+id:''}  ${type=="1"?'AND time<'+Math.floor(new Date()/1000)+86400*7:''}`;
     try {
         result.count = await sqlhelper.selectTableCount('infor',filterstr);
         if (result.count == 0) {
@@ -30,7 +30,7 @@ async function getlist(req,res) {    //获取预约列表
             }
             res.send(JSON.stringify(result));
         }
-        filter = `WHERE send != 0  And infor.applicant = users.id  ${id?'And infor.applicant='+id:''} ${type=="1"?'AND infor.time<'+(Number(Math.floor(new Date()/1000)+86400*7)):''} ${filter?'And infor.status='+key:''} And infor.id ORDER BY id DESC LIMIT ${(page - 1) * pageSize},${pageSize}`;
+        filter = `WHERE send = ${type}   And infor.applicant = users.id  ${id?'And infor.applicant='+id:''} ${type=="1"?'AND infor.time<'+(Number(Math.floor(new Date()/1000)+86400*7)):''} ${filter?'And infor.status='+key:''} And infor.id ORDER BY id DESC LIMIT ${(page - 1) * pageSize},${pageSize}`;
         result.data = await sqlhelper.selectTableItemFromTwoTable(['infor', 'users'], filter, ['infor.*', 'users.name', 'users.phonenumber'])
         result.code = 0;
         result.msg = '发送成功!';

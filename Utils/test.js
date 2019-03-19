@@ -1,28 +1,18 @@
-// var redis = require("redis"),
-//     client = redis.createClient({port:9102});
+// var mail = require("./Mailhelper.js");
+// var to = '337118043@qq.com';
 
-// if you'd like to select database 3, instead of 0 (default), call
-// client.select(3, function() { /* ... */ });
-
-// client.on("error", function (err) {
-//     console.log("Error " + err);
+// var mails = new Array(3).fill({
+//     from: 'itstudio@stu.ouc.edu.cn',
+//     to,
+//     subject: '众创空间预约',
+//     text: '',
+//     html: `<h1>你好</h1>`
 // });
 
-
-
-
-function test(req,res) {
-    // client.set("string key", "string val", redis.print);
-    // client.hset("hash key", "hashtest 1", "some value", redis.print);
-    // client.hset(["hash key", "hashtest 2", "some other value"], redis.print);
-    // client.hkeys("hash key", function (err, replies) {
-    //     console.log(replies.length + " replies:");
-    //     replies.forEach(function (reply, i) {
-    //         console.log("    " + i + ": " + reply);
-    //     });
-    //     client.quit();
-    // });
-}
-module.exports = {
-    test
-}
+// var spacing = [1000,1000,1000]
+// mail.sendMails(mails,spacing).then(
+//     function (err,data) {
+//         console.log(err);
+//         console.log(data);
+//     }
+// )

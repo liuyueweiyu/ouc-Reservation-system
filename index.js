@@ -20,6 +20,15 @@ try{
 	    /**
 	     * 设置中间件
 	     */
+		.all('*', function (req, res, next) {
+			res.header("Access-Control-Allow-Origin", "http://localhost:8080");
+			res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+			res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+			res.header("Access-Control-Allow-Credentials", true);
+			res.header("X-Powered-By", ' 3.2.1')
+			if (req.method == "OPTIONS") res.send(200); /*让options请求快速返回*/
+			else next();
+		})
 	    .use(morgan('short')) //日志
 	    .use(express.static(path.join(__dirname, 'public'))) //设置静态文件
 	    .use(bodyParser.urlencoded({
@@ -33,10 +42,10 @@ try{
 	        saveUninitialized: true,
 	    }))
 	    .use(function (req,res,next) {      //验证登陆
-	        // if (/^\/admin.*/.test(req.path) && req.path != '/admin/login' && !req.session.login) {  //验证管理员登陆
-	        //     res.send(require('./Utils/JSScript').ADMIN_WITHOUT_LOGIN);
-	        //     return;
-			// }
+	        if (/^\/admin.*/.test(req.path) && req.path != '/admin/login' && !req.session.login) {  //验证管理员登陆
+	            res.send(require('./Utils/JSScript').ADMIN_WITHOUT_LOGIN);
+	            return;
+			}
 			if (/^\/user.*/.test(req.path)  && !req.session.user) { //验证用户登陆
 				if (req.path != '/user/register' 
 				&& req.path != '/user/login' 

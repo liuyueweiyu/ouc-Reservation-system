@@ -28,7 +28,7 @@ async function submitinfor(req,res) {
                 to: req.body.email,
                 subject: '激活用户',
                 text: '',
-                html: `<h1>点击链接激活,如果激活失败请尝试复制链接后从浏览器中打开...<a href='${webconfig.IP}/active'?id=${req.session.user}&&code=${code}'>${webconfig.IP}/active?id=${req.session.user}&&code=${code}</a></h1>`
+                html: `<h1>点击链接激活,如果激活失败请尝试复制链接后从浏览器中打开...<a href='${webconfig.IP}/active?id=${req.session.user}&&code=${code}'>${webconfig.IP}/active?id=${req.session.user}&&code=${code}</a></h1>`
             }
             mailhelper.sendMail(mailOptions);
             res.send(JSON.stringify({

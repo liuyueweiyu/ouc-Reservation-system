@@ -57,7 +57,7 @@ router.get('/admin/userlist',AdminHelper.list.getUserlist)
       .get('/user/logout', UserHelper.sign.logout)
       .get('/active',UserHelper.update.active)
       .post('/user/forget', UserHelper.update.forget)
-      .get('/test/',test.test)
+    //   .get('/test/',test.test)
 router.post('/updatedb/',AdminHelper.update.Update);
     
 
