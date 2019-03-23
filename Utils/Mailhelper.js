@@ -2,7 +2,7 @@ const config = {
     host: 'stu.ouc.edu.cn',
     port: 25,
     auth: {
-        user: 'itstudio@stu.ouc.edu.cn',
+        user: '',
         pass: ''
     }
 };
