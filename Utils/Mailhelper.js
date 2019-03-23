@@ -3,7 +3,7 @@ const config = {
     port: 25,
     auth: {
         user: 'itstudio@stu.ouc.edu.cn',
-        pass: 'Itdn2018'
+        pass: ''
     }
 };
 const nodemailer = require('nodemailer');
