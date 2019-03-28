@@ -1,12 +1,11 @@
 import './index.scss';
 import Status from './status';
 import Editor from './editor';
-// import Detail from './detail';
 import Reservation from './reservation';
 import Button from '../component/button/';
 import compressImage from '../script/compressImg';
 import Disorder from './disorder';
-
+// import { BrowserRouter } from 'react-router-dom'
 class Person extends React.Component{
     constructor(props){
         super(props);
@@ -145,7 +144,7 @@ class Person extends React.Component{
 
     render(){
         return  (
-            <React.Fragment>
+            <BrowserRouter>
                 {
                     this.state.layer != 0 && 
                     <div className='layer'>
@@ -197,7 +196,7 @@ class Person extends React.Component{
                         <footer className='footer'>Copyright @2018 爱特工作室</footer>
                     </div>
                 </div>
-            </React.Fragment>
+            </BrowserRouter>
         )
     }
 

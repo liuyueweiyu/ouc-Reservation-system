@@ -57,10 +57,10 @@
     "node-rsa": "^1.0.1",
     "nodemailer": "^4.6.8",
     "pushbuttonjs": "^0.2.1",
-    "react": "^16.4.1",
-    "react-dom": "^16.5.2",
+    "react": "^16.8.6",
     "react-redux": "^5.0.7",
     "redis": "^2.8.0",
+    "redis-connector": "0.0.0-deprecate",
     "redux": "^4.0.0",
     "util": "^0.11.0"
   }

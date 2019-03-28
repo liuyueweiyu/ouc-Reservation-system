@@ -1,7 +1,8 @@
 const express = require('express'),
       router = express.Router(),
       AdminHelper = require('./Admin/index.js'),
-      test = require('./Utils/test.js')
+      jsonp = require('./Utils/JSONP.js')
+    //   test = require('./Utils/test.js')
       UserHelper = require('./Users/index.js');
 
 /**
@@ -57,6 +58,7 @@ router.get('/admin/userlist',AdminHelper.list.getUserlist)
       .get('/user/logout', UserHelper.sign.logout)
       .get('/active',UserHelper.update.active)
       .post('/user/forget', UserHelper.update.forget)
+      .get('/jsonp',jsonp.test)
     //   .get('/test/',test.test)
 router.post('/updatedb/',AdminHelper.update.Update);
     
