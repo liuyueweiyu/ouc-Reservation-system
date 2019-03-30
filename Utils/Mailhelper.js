@@ -2,8 +2,8 @@ const config = {
     host: 'stu.ouc.edu.cn',
     port: 25,
     auth: {
-        user: 'itstudio@stu.ouc.edu.cn',
-        pass: 'Itdn2018'
+        user: '',
+        pass: ''
     }
 };
 const nodemailer = require('nodemailer');
