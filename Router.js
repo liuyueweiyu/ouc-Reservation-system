@@ -60,7 +60,7 @@ router.get('/admin/userlist',AdminHelper.list.getUserlist)
       .post('/user/forget', UserHelper.update.forget)
       .get('/jsonp',jsonp.test)
     //   .get('/test/',test.test)
-router.post('/updatedb/',AdminHelper.update.Update);
-    
+router.post('/updatedb/',AdminHelper.update.Update)
+      
 
 module.exports = router;

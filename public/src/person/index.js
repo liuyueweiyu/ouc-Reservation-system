@@ -5,7 +5,7 @@ import Reservation from './reservation';
 import Button from '../component/button/';
 import compressImage from '../script/compressImg';
 import Disorder from './disorder';
-// import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, Switch, Route , Link } from 'react-router-dom'
 class Person extends React.Component{
     constructor(props){
         super(props);
@@ -143,6 +143,7 @@ class Person extends React.Component{
     }
 
     render(){
+        const url = '/dist/person.html';
         return  (
             <BrowserRouter>
                 {
@@ -177,20 +178,34 @@ class Person extends React.Component{
                 <div className='container clearfloat'>
                     <nav className='nav'>
                         <ul>
-                            <li className='navitem' onClick={this.changeStage.bind(this,0)}><a className={this.state.stage != 0?'':'select'}>账号状态</a></li>
-                            <li className='navitem' onClick={this.changeStage.bind(this,1)}><a className={this.state.stage != 1?'':'select'}>修改信息</a></li>
-                            <li className='navitem' onClick={this.changeStage.bind(this,2)}><a className={this.state.stage != 2?'':'select'}>查看预约记录</a></li>
-                            <li className='navitem' onClick={this.changeStage.bind(this,3)}><a className={this.state.stage != 3?'':'select'}>查看违规记录</a></li>
+                            <li className='navitem' onClick={this.changeStage.bind(this,0)}><Link className={this.state.stage != 0?'':'select'}  to={url+ '/'}>账号状态</Link></li>
+                            <li className='navitem' onClick={this.changeStage.bind(this,1)}><Link className={this.state.stage != 1?'':'select'} to={url+ '/editor'}>修改信息</Link></li>
+                            <li className='navitem' onClick={this.changeStage.bind(this,2)}><Link className={this.state.stage != 2?'':'select'} to={url + '/reservation'}>查看预约记录</Link></li>
+                            <li className='navitem' onClick={this.changeStage.bind(this,3)}><Link className={this.state.stage != 3?'':'select'} to={url + '/disorder'} >查看违规记录</Link></li>
                             <li className='navitem' onClick={this.logout.bind(this)}><a>注销登陆</a></li>
                             <li className='navitem'><a href='./index.html'> 返回首页</a></li>
                         </ul>
                     </nav>
                     <div className='main'>
                         <div className='content'>
-                            {this.state.stage == 0 && <Status  status={this.state.status} />}
+                            <Switch>
+                                <Route exact path={url + '/'} render={() => (
+                                    <Status  status={this.state.status} />
+                                )}/>
+                                <Route exact path={url + '/editor'} render={() => (
+                                    <Editor email={this.state.email} phonenumber={this.state.phonenumber} />
+                                )}/>
+                                <Route exact path={url + '/disorder'} component={Disorder}/>
+                                <Route exact path={url + '/reservation'} render={() => (
+                                    <Reservation openLayer={this.openLayer.bind(this)} />
+                                )}/>
+                            </Switch>
+
+
+                            {/* {this.state.stage == 0 && <Status  status={this.state.status} />}
                             {this.state.stage == 1 && <Editor email={this.state.email} phonenumber={this.state.phonenumber} />}
                             {this.state.stage == 3 && <Disorder />}
-                            {this.state.stage == 2 && <Reservation openLayer={this.openLayer.bind(this)}/>}
+                            {this.state.stage == 2 && <Reservation openLayer={this.openLayer.bind(this)}/>} */}
                             {/* {this.state.stage == 4 && <Detail detail={this.state.detail} />} */}
                         </div>
                         <footer className='footer'>Copyright @2018 爱特工作室</footer>

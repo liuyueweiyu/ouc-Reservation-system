@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+
+</head>
+<body>
+    <script>
+        let a = axios.create({
+             baseURL: '/user',
+        })
+        a.get('./list',{
+            params:{
+                id :1 
+            }
+        })
+            .then(function (response) {
+                console.log('ok')
+                console.log(response);
+            })
+            .catch(function (error) {
+            console.log(error);
+        });
+    </script>
+</body>
+</html>

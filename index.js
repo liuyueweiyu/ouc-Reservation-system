@@ -22,14 +22,15 @@ try{
 	     * 设置中间件
 	     */
 		// .all('*', function (req, res, next) {
-		// 	console.log(req);
-		// 	res.header("Access-Control-Allow-Origin", "----------------");
-		// 	res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
-		// 	res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
-		// 	res.header("Access-Control-Allow-Credentials", true);
-		// 	res.header("X-Powered-By", ' 3.2.1')
-		// 	if (req.method == "OPTIONS") res.send(200); /*让options请求快速返回*/
-		// 	else next();
+		// 	// console.log(req);
+		// 	// res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+		// 	// res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+		// 	// res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+		// 	// res.header("Access-Control-Allow-Credentials", true);
+		// 	// res.header("X-Powered-By", ' 3.2.1')
+		// 	// if (req.method == "OPTIONS") res.send(200); /*让options请求快速返回*/
+		// 	// else next();
+		// 	next();
 		// })
 	    .use(morgan('short')) //日志
 	    .use(express.static(path.join(__dirname, 'public'))) //设置静态文件
@@ -58,9 +59,13 @@ try{
 					return;
 				}
 			}
+			if (/^\/dist\/person\.html.*/.test(req.path)) {
+				res.send(require('./Utils/JSScript').RESET_ROUTER)
+				return;
+			}
 	        next();
 	    })
-	    .use('/', router)                   //分发路由
+		.use('/', router)                   //分发路由
 	    .listen(9012);
 }
 catch(e){
